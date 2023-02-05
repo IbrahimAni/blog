@@ -1,17 +1,16 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-// import { PostDetail, Categories, PostWidget, Author, Comments, CommentsForm, Loader } from '../../components';
-import { PostDetail, Categories, PostWidget, Author, Comments, CommentsForm } from '../../components';
+import { PostDetail, Categories, PostWidget, Author, Comments, CommentsForm, Loader } from '../../components';
 import { getPost, getPostDetails } from '../../services';
-// import { AdjacentPosts } from '../../sections';
+import { AdjacentPosts } from '../../sections';
 
 const PostDetails = ({ post }) => {
-  // const router = useRouter();
+  const router = useRouter();
 
-  // if (router.isFallback) {
-  //   return <Loader />;
-  // }
+  if (router.isFallback) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -20,7 +19,7 @@ const PostDetails = ({ post }) => {
           <div className="col-span-1 lg:col-span-8">
             <PostDetail post={post} />
             <Author author={post.author} />
-            {/* <AdjacentPosts slug={post.slug} createdAt={post.createdAt} /> */}
+            <AdjacentPosts slug={post.slug} createdAt={post.createdAt} />
             <CommentsForm slug={post.slug} />
             <Comments slug={post.slug} />
           </div>
